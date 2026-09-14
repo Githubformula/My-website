@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAHID FOOTWEAR | Premium Footwear Showroom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#121212',
+                            card: '#1e1e1e',
+                            gold: '#d4af37',
+                            goldLight: '#f3e5ab',
+                            accent: '#2a2a2a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom smooth scrollbar & styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-gold selection:text-black">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-gold to-amber-600 flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-brand-gold/20 group-hover:scale-105 transition-transform">
+                    W
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-gray-200 to-brand-gold bg-clip-text text-transparent">WAHID</span>
+                    <span class="block text-xs uppercase tracking-widest text-brand-gold font-semibold">Footwear Showroom</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#hero" class="text-gray-300 hover:text-brand-gold transition-colors">Home</a>
+                <a href="#catalog" class="text-gray-300 hover:text-brand-gold transition-colors">Collection</a>
+                <a href="#features" class="text-gray-300 hover:text-brand-gold transition-colors">Why Us</a>
+                <a href="#policies" class="text-gray-300 hover:text-brand-gold transition-colors">Policies</a>
+                <a href="#contact" class="text-gray-300 hover:text-brand-gold transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleCart()" aria-label="Open Cart" class="relative p-2.5 rounded-xl bg-brand-card hover:bg-gray-800 border border-gray-700/60 text-gray-200 hover:text-brand-gold transition-all">
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-brand-gold text-black font-bold text-xs rounded-full flex items-center justify-center shadow-md hidden">0</span>
+                </button>
+                <a href="#catalog" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-gold to-amber-600 text-black font-bold text-sm shadow-lg shadow-brand-gold/20 hover:opacity-95 transition-all transform hover:-translate-y-0.5">
+                    <span>Shop Now</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden p-2.5 rounded-xl bg-brand-card border border-gray-700 text-gray-200">
+                    <i class="fa-solid fa-bars text-lg" id="mobileMenuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 bg-brand-card border-b border-gray-800 p-6 shadow-2xl transition-all">
+            <div class="flex flex-col gap-4 text-center">
+                <a href="#hero" onclick="toggleMobileMenu()" class="py-2 text-lg font-medium text-gray-200 hover:text-brand-gold">Home</a>
+                <a href="#catalog" onclick="toggleMobileMenu()" class="py-2 text-lg font-medium text-gray-200 hover:text-brand-gold">Collection</a>
+                <a href="#features" onclick="toggleMobileMenu()" class="py-2 text-lg font-medium text-gray-200 hover:text-brand-gold">Why Us</a>
+                <a href="#policies" onclick="toggleMobileMenu()" class="py-2 text-lg font-medium text-gray-200 hover:text-brand-gold">Policies</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="py-2 text-lg font-medium text-gray-200 hover:text-brand-gold">Contact</a>
+                <a href="#catalog" onclick="toggleMobileMenu()" class="mt-2 py-3 bg-brand-gold text-black font-bold rounded-xl text-center shadow-lg">Explore Collection</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        <!-- Background Glow & Pattern -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-950/30 via-brand-dark to-brand-dark pointer-events-none"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Hero Left Content -->
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-card border border-brand-gold/30 text-brand-gold text-xs font-semibold tracking-wider uppercase shadow-inner">
+                    <i class="fa-solid fa-crown"></i>
+                    <span>Welcome to Wahid Footwear Showroom</span>
+                </div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                    Step Into <span class="bg-gradient-to-r from-brand-gold via-amber-200 to-amber-500 bg-clip-text text-transparent">Luxury</span> & Comfort
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+                    Discover handpicked elegance, premium leather formals, trendy casuals, and durable sportswear for the whole family. Quality crafted for every stride you take.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#catalog" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-gold to-amber-600 text-black font-extrabold text-base shadow-xl shadow-brand-gold/25 hover:opacity-95 transition-all transform hover:-translate-y-1 text-center">
+                        Explore Collection <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-brand-card hover:bg-gray-800 border border-gray-700 text-gray-200 font-bold text-base transition-all text-center">
+                        <i class="fa-solid fa-location-dot mr-2 text-brand-gold"></i> Visit Store
+                    </a>
+                </div>
+                <!-- Trust Stats -->
+                <div class="grid grid-cols-3 gap-6 pt-8 border-t border-gray-800 max-w-lg mx-auto lg:mx-0">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-white">15+ Yr</p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Showroom Trust</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-white">500+</p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Footwear Styles</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-white">100%</p>
+                        <p class="text-xs text-gray-400 mt-1 uppercase tracking-wider">Original Quality</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Right Visual Banner -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-gold to-amber-600 rounded-3xl blur-lg opacity-30 animate-pulse"></div>
+                    <div class="relative rounded-3xl overflow-hidden bg-brand-card border border-gray-700 shadow-2xl aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Featured Red Nike Sneaker" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700">
+                        <!-- Floating Badge Card -->
+                        <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-black/80 backdrop-blur-md border border-gray-700/80 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-brand-gold font-bold uppercase tracking-wider">Featured Best Seller</span>
+                                <p class="text-white font-bold text-lg">Wahid Pro Runner Elite</p>
+                            </div>
+                            <span class="px-3 py-1.5 bg-brand-gold text-black font-extrabold text-sm rounded-xl">₹3,499</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalog" class="py-24 bg-brand-card/50 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs">Curated Catalog</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-3 tracking-tight">Explore Our Footwear Range</h2>
+                <p class="text-gray-400 mt-4 text-base">From executive meetings to weekend tracks, find the perfect pair crafted for comfort and prestige.</p>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mt-8">
+                    <button onclick="filterProducts('all')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-gold text-black transition-all shadow-md" data-category="all">All Styles</button>
+                    <button onclick="filterProducts('men-formal')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-gold transition-all" data-category="men-formal">Men's Formal</button>
+                    <button onclick="filterProducts('men-casual')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-gold transition-all" data-category="men-casual">Men's Casual</button>
+                    <button onclick="filterProducts('womens')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-gold transition-all" data-category="womens">Women's Collection</button>
+                    <button onclick="filterProducts('sports')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-gold transition-all" data-category="sports">Sports & Running</button>
+                    <button onclick="filterProducts('kids')" class="cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-gold transition-all" data-category="kids">Kids' Footwear</button>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products injected dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="policies" class="py-24 bg-brand-dark border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-gold font-bold uppercase tracking-widest text-xs">Customer Assurance</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-3 tracking-tight">Store Policies & Showroom Info</h2>
+                <p class="text-gray-400 mt-4 text-base">We believe in transparent service, easy fittings, and delightful showroom experiences.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Policy Card 1 -->
+                <div class="p-8 rounded-3xl bg-brand-card border border-gray-800 hover:border-brand-gold/50 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-gold group-hover:text-black transition-all">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Same-Day Size Exchange</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Bought the wrong size? Visit our showroom within 7 days with the original box and bill for a hassle-free size exchange.
+                    </p>
+                </div>
+
+                <!-- Policy Card 2 -->
+                <div class="p-8 rounded-3xl bg-brand-card border border-gray-800 hover:border-brand-gold/50 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-gold group-hover:text-black transition-all">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Authenticity Guarantee</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        All footwear sold at Wahid Footwear is 100% genuine quality checked. No returns on used footwear as per standard showroom hygiene policy.
+                    </p>
+                </div>
+
+                <!-- Policy Card 3 -->
+                <div class="p-8 rounded-3xl bg-brand-card border border-gray-800 hover:border-brand-gold/50 transition-all group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-gold/10 text-brand-gold flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-brand-gold group-hover:text-black transition-all">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Showroom Timings</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Open 7 Days a Week!<br>
+                        Monday – Saturday: 10:00 AM – 9:30 PM<br>
+                        Sunday: 11:00 AM – 8:30 PM
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-brand-card/40 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Contact Info -->
+                <div class="space-y-8">
+                    <div>
+                        <span class="text-brand-gold font-bold uppercase tracking-widest text-xs">Get In Touch</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">Visit Our Flagship Showroom</h2>
+                        <p class="text-gray-400 mt-4 text-base">Have a question about a specific size or stock availability? Drop us a message or visit our store today.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-card border border-gray-700 flex items-center justify-center text-brand-gold text-lg shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Showroom Address</h4>
+                                <p class="text-gray-400 text-sm mt-1">Main Market Road, Near Central Plaza, New Delhi, India 110001</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-card border border-gray-700 flex items-center justify-center text-brand-gold text-lg shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Phone Inquiries</h4>
+                                <p class="text-gray-400 text-sm mt-1">+91 98765 43210 / +91 11 2345 6789</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-card border border-gray-700 flex items-center justify-center text-brand-gold text-lg shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-base">Email Support</h4>
+                                <p class="text-gray-400 text-sm mt-1">support@wahidfootwear.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form -->
+                <div class="p-8 sm:p-10 rounded-3xl bg-brand-card border border-gray-800 shadow-2xl relative">
+                    <h3 class="text-2xl font-bold text-white mb-6">Send an Inquiry</h3>
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-5">
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Your Full Name</label>
+                            <input type="text" required placeholder="Aarav Sharma" class="w-full px-4 py-3.5 rounded-xl bg-brand-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold transition-all text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Phone Number</label>
+                            <input type="tel" required placeholder="+91 98765 00000" class="w-full px-4 py-3.5 rounded-xl bg-brand-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold transition-all text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Message or Requirement</label>
+                            <textarea rows="4" required placeholder="Looking for leather formal shoes in size UK 9..." class="w-full px-4 py-3.5 rounded-xl bg-brand-dark border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-brand-gold transition-all text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-amber-600 text-black font-extrabold text-base shadow-lg shadow-brand-gold/20 hover:opacity-95 transition-all">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-gold to-amber-600 flex items-center justify-center text-black font-extrabold text-lg">
+                    W
+                </div>
+                <span class="text-lg font-bold text-white tracking-wider">WAHID FOOTWEAR</span>
+            </div>
+            <p class="text-gray-500 text-sm text-center">
+                © 2026 Wahid Footwear Showroom. All rights reserved. Crafted for excellence.
+            </p>
+            <div class="flex items-center gap-4 text-gray-400">
+                <a href="#" class="w-10 h-10 rounded-xl bg-brand-card border border-gray-800 flex items-center justify-center hover:text-brand-gold hover:border-brand-gold transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-brand-card border border-gray-800 flex items-center justify-center hover:text-brand-gold hover:border-brand-gold transition-all"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-brand-card border border-gray-800 flex items-center justify-center hover:text-brand-gold hover:border-brand-gold transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer Overlay -->
+    <div id="cartOverlay" onclick="toggleCart()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+
+    <!-- Cart Drawer -->
+    <div id="cartDrawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-brand-card border-l border-gray-800 z-50 transform translate-x-full transition-transform duration-300 flex flex-col shadow-2xl">
+        <div class="p-6 border-b border-gray-800 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-bag-shopping text-brand-gold text-xl"></i>
+                <h3 class="text-xl font-bold text-white">Your Cart</h3>
+            </div>
+            <button onclick="toggleCart()" class="w-9 h-9 rounded-xl bg-brand-dark border border-gray-700 text-gray-400 hover:text-white flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Cart items populated via JS -->
+        </div>
+
+        <div id="cartFooter" class="p-6 border-t border-gray-800 bg-brand-dark">
+            <div class="space-y-2 mb-4">
+                <div class="flex justify-between text-sm text-gray-400">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+                <div class="flex justify-between text-sm text-gray-400">
+                    <span>Showroom Pickup / Delivery</span>
+                    <span class="text-green-400 font-semibold">FREE</span>
+                </div>
+                <div class="flex justify-between text-lg font-extrabold text-white pt-2 border-t border-gray-800">
+                    <span>Total Amount</span>
+                    <span id="cartTotal" class="text-brand-gold">₹0</span>
+                </div>
+            </div>
+            <button onclick="openCheckout()" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-amber-600 text-black font-extrabold text-base shadow-lg shadow-brand-gold/20 hover:opacity-95 transition-all">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="bg-brand-card border border-gray-800 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative transform transition-all animate-in fade-in zoom-in-95 duration-200">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-all">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="h-72 md:h-full bg-gray-900 relative">
+                    <img id="modalImg" src="" alt="Product" class="w-full h-full object-cover">
+                    <span id="modalTag" class="absolute top-4 left-4 px-3 py-1 bg-brand-gold text-black text-xs font-extrabold rounded-lg uppercase"></span>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                        <span id="modalCategory" class="text-xs text-brand-gold font-bold uppercase tracking-wider"></span>
+                        <h3 id="modalTitle" class="text-2xl font-extrabold text-white mt-1"></h3>
+                        <p id="modalPrice" class="text-2xl font-extrabold text-brand-gold mt-2"></p>
+                        <p id="modalDesc" class="text-gray-400 text-sm mt-4 leading-relaxed"></p>
+                        
+                        <div class="mt-6">
+                            <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Select Size (UK/India)</label>
+                            <div id="sizeSelector" class="flex flex-wrap gap-2">
+                                <!-- Sizes populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <button id="modalAddBtn" onclick="" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-gold to-amber-600 text-black font-extrabold text-sm shadow-lg shadow-brand-gold/20 hover:opacity-95 transition-all">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simulated Checkout Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
+        <div class="bg-brand-card border border-gray-800 rounded-3xl max-w-lg w-full p-8 shadow-2xl relative">
+            <button onclick="closeCheckout()" class="absolute top-6 right-6 w-9 h-9 rounded-xl bg-brand-dark border border-gray-700 text-gray-400 hover:text-white flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-2">Checkout Order</h3>
+            <p class="text-gray-400 text-sm mb-6">Complete your order for store pickup or home delivery from Wahid Footwear.</p>
+
+            <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Full Name</label>
+                    <input type="text" required placeholder="Rajesh Kumar" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-gray-700 text-white text-sm focus:outline-none focus:border-brand-gold">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Phone Number</label>
+                    <input type="tel" required placeholder="+91 98765 00000" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-gray-700 text-white text-sm focus:outline-none focus:border-brand-gold">
+                </div>
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Delivery Preference</label>
+                    <select class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-gray-700 text-white text-sm focus:outline-none focus:border-brand-gold">
+                        <option>Showroom Pickup (Pay at Store / UPI)</option>
+                        <option>Home Delivery (Standard - Free)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs uppercase font-bold text-gray-400 mb-2">Delivery Address</label>
+                    <textarea rows="2" required placeholder="House No, Street, City, Pincode" class="w-full px-4 py-3 rounded-xl bg-brand-dark border border-gray-700 text-white text-sm focus:outline-none focus:border-brand-gold"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-gold to-amber-600 text-black font-extrabold text-base shadow-lg shadow-brand-gold/20 hover:opacity-95 transition-all mt-4">
+                    Confirm Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom Notification Box (Instead of alert) -->
+    <div id="notificationBox" class="fixed bottom-6 right-6 z-50 bg-brand-card border border-brand-gold text-white px-6 py-4 rounded-2xl shadow-2xl transform translate-y-32 opacity-0 transition-all duration-300 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-brand-gold text-xl"></i>
+        <div>
+            <h5 id="notifTitle" class="font-bold text-sm">Success</h5>
+            <p id="notifMsg" class="text-xs text-gray-400">Action completed successfully.</p>
+        </div>
+    </div>
+
+    <script>
+        // Product Database
+        const products = [
+            {
+                id: 1,
+                name: "Wahid Executive Oxford Formal",
+                category: "men-formal",
+                price: 2999,
+                tag: "Best Seller",
+                image: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80",
+                description: "Handcrafted genuine leather formal shoes designed for executive boardroom presence and all-day comfort.",
+                sizes: [7, 8, 9, 10, 11]
+            },
+            {
+                id: 2,
+                name: "Royal Derby Leather Brogue",
+                category: "men-formal",
+                price: 3499,
+                tag: "New Arrival",
+                image: "https://images.unsplash.com/photo-1533867617858-e7d97e0afd8b?auto=format&fit=crop&w=800&q=80",
+                description: "Classic perforated brogue detailing with premium polish finish and cushioned inner sole.",
+                sizes: [8, 9, 10, 11]
+            },
+            {
+                id: 3,
+                name: "Urban Street Minimalist Sneaker",
+                category: "men-casual",
+                price: 2199,
+                tag: "Trending",
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80",
+                description: "Clean white everyday casual sneakers crafted with breathable synthetic leather and durable rubber outsole.",
+                sizes: [7, 8, 9, 10]
+            },
+            {
+                id: 4,
+                name: "Suede Comfort Loafers",
+                category: "men-casual",
+                price: 2499,
+                tag: "Best Seller",
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80",
+                description: "Slip-on suede leather loafers ideal for casual outings, festive dinners, and relaxed weekend wear.",
+                sizes: [7, 8, 9, 10, 11]
+            },
+            {
+                id: 5,
+                name: "Aura Crystal Strapped Heel",
+                category: "womens",
+                price: 2799,
+                tag: "New Arrival",
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80",
+                description: "Elegant party-wear heels featuring delicate crystal straps and ergonomic arch support for dancing all night.",
+                sizes: [5, 6, 7, 8]
+            },
+            {
+                id: 6,
+                name: "Bella Embroidered Ethnic Juttis",
+                category: "womens",
+                price: 1599,
+                tag: "Traditional",
+                image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=80",
+                description: "Hand-stitched ethnic juttis with rich zari embroidery, perfect for weddings and festive celebrations.",
+                sizes: [5, 6, 7, 8, 9]
+            },
+            {
+                id: 7,
+                name: "Apex Pro Marathon Runner",
+                category: "sports",
+                price: 3999,
+                tag: "Best Seller",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+                description: "High-performance running shoes equipped with shock-absorption air cushion technology and breathable mesh.",
+                sizes: [7, 8, 9, 10, 11]
+            },
+            {
+                id: 8,
+                name: "Terrain Trekking Sports Sneaker",
+                category: "sports",
+                price: 3299,
+                tag: "Durable",
+                image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80",
+                description: "Rugged outsole sports sneakers built for gym training, running tracks, and outdoor trekking adventures.",
+                sizes: [8, 9, 10, 11]
+            },
+            {
+                id: 9,
+                name: "Kids Light-Up Unicorn Sneaker",
+                category: "kids",
+                price: 1299,
+                tag: "Kids Favorite",
+                image: "https://images.unsplash.com/photo-1514989940753-eaf052ddef9b?auto=format&fit=crop&w=800&q=80",
+                description: "Fun light-up casual sneakers for kids with velcro straps for easy wear and cheerful cartoon designs.",
+                sizes: [1, 2, 3, 4, 5]
+            },
+            {
+                id: 10,
+                name: "Junior Sport Velcro Runner",
+                category: "kids",
+                price: 1499,
+                tag: "Active",
+                image: "https://images.unsplash.com/photo-1519456264917-42d0aa2e0625?auto=format&fit=crop&w=800&q=80",
+                description: "Durable sports shoes designed specifically for school sports and active playground running.",
+                sizes: [2, 3, 4, 5]
+            }
+        ];
+
+        let cart = [];
+        let selectedSize = null;
+
+        // Initialize Page
+        window.onload = function () {
+            renderProducts(products);
+        };
+
+        // Render Product Catalog
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+
+            if(items.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-500">No footwear found in this category.</div>`;
+                return;
+            }
+
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "group bg-brand-dark rounded-3xl border border-gray-800 hover:border-brand-gold/50 transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-xl";
+                card.innerHTML = `
+                    <div class="relative aspect-[4/3] bg-gray-900 overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e1e1e/d4af37?text=Wahid+Footwear'">
+                        <span class="absolute top-3 left-3 px-3 py-1 bg-brand-gold text-black text-xs font-extrabold rounded-lg uppercase tracking-wider">${product.tag}</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1 justify-between">
+                        <div>
+                            <span class="text-xs text-brand-gold font-bold uppercase tracking-wider">${product.category.replace('-', ' ')}</span>
+                            <h3 class="text-lg font-bold text-white mt-1 group-hover:text-brand-gold transition-colors cursor-pointer" onclick="openProductModal(${product.id})">${product.name}</h3>
+                        </div>
+                        <div class="flex items-center justify-between mt-6 pt-4 border-t border-gray-800/80">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Price</span>
+                                <span class="text-xl font-extrabold text-white">₹${product.price.toLocaleString('en-IN')}</span>
+                            </div>
+                            <button onclick="quickAddToCart(${product.id})" class="px-4 py-2.5 rounded-xl bg-brand-card hover:bg-brand-gold hover:text-black border border-gray-700 hover:border-brand-gold font-bold text-xs transition-all flex items-center gap-2">
+                                <i class="fa-solid fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Category Filter
+        function filterProducts(category) {
+            // Update active button state
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if(btn.dataset.category === category) {
+                    btn.className = "cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-gold text-black transition-all shadow-md";
+                } else {
+                    btn.className = "cat-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-gold transition-all";
+                }
+            });
+
+            if(category === 'all') {
+                renderProducts(products);
+            } else {
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toggle Cart Drawer
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('cartOverlay');
+            drawer.classList.toggle('translate-x-full');
+            overlay.classList.toggle('hidden');
+        }
+
+        // Quick Add to Cart with default size
+        function quickAddToCart(id) {
+            const product = products.find(p => p.id === id);
+            const defaultSize = product.sizes[0];
+            
+            const existing = cart.find(item => item.id === id && item.size === defaultSize);
+            if(existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, size: defaultSize, qty: 1 });
+            }
+            
+            updateCartUI();
+            showNotification("Added to Cart", `${product.name} (Size: ${defaultSize}) added successfully.`);
+        }
+
+        // Update Cart UI & Badge
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const container = document.getElementById('cartItemsContainer');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const totalEl = document.getElementById('cartTotal');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            if(totalCount > 0) {
+                badge.textContent = totalCount;
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-500">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-3 text-gray-600"></i>
+                        <p class="text-sm font-semibold">Your cart is empty.</p>
+                        <p class="text-xs text-gray-600 mt-1">Explore our collection and add your favorite footwear.</p>
+                    </div>
+                `;
+                subtotalEl.textContent = '₹0';
+                totalEl.textContent = '₹0';
+                return;
+            }
+
+            container.innerHTML = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                subtotal += item.price * item.qty;
+                const itemEl = document.createElement('div');
+                itemEl.className = "flex items-center gap-4 p-4 rounded-2xl bg-brand-dark border border-gray-800";
+                itemEl.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-xl bg-gray-900">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="text-white font-bold text-sm truncate">${item.name}</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Size: UK ${item.size}</p>
+                        <p class="text-xs font-extrabold text-brand-gold mt-1">₹${item.price.toLocaleString('en-IN')}</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQty(${index}, -1)" class="w-7 h-7 rounded-lg bg-gray-800 text-gray-300 hover:text-white flex items-center justify-center text-xs">-</button>
+                        <span class="text-xs font-bold text-white w-5 text-center">${item.qty}</span>
+                        <button onclick="changeQty(${index}, 1)" class="w-7 h-7 rounded-lg bg-gray-800 text-gray-300 hover:text-white flex items-center justify-center text-xs">+</button>
+                    </div>
+                `;
+                container.appendChild(itemEl);
+            });
+
+            subtotalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+            totalEl.textContent = `₹${subtotal.toLocaleString('en-IN')}`;
+        }
+
+        // Change Cart Quantity
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if(cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        // Product Details Modal Logic
+        function openProductModal(id) {
+            const product = products.find(p => p.id === id);
+            selectedSize = product.sizes[0];
+
+            document.getElementById('modalImg').src = product.image;
+            document.getElementById('modalTag').textContent = product.tag;
+            document.getElementById('modalCategory').textContent = product.category.replace('-', ' ');
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalPrice').textContent = `₹${product.price.toLocaleString('en-IN')}`;
+            document.getElementById('modalDesc').textContent = product.description;
+
+            const sizeContainer = document.getElementById('sizeSelector');
+            sizeContainer.innerHTML = '';
+            product.sizes.forEach((sz, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `px-4 py-2 rounded-xl text-xs font-bold border transition-all ${idx === 0 ? 'bg-brand-gold text-black border-brand-gold' : 'bg-brand-dark text-gray-300 border-gray-700 hover:border-brand-gold'}`;
+                btn.textContent = `UK ${sz}`;
+                btn.onclick = () => {
+                    selectedSize = sz;
+                    sizeContainer.querySelectorAll('button').forEach(b => b.className = "px-4 py-2 rounded-xl text-xs font-bold border bg-brand-dark text-gray-300 border-gray-700 hover:border-brand-gold");
+                    btn.className = "px-4 py-2 rounded-xl text-xs font-bold border bg-brand-gold text-black border-brand-gold";
+                };
+                sizeContainer.appendChild(btn);
+            });
+
+            document.getElementById('modalAddBtn').onclick = () => {
+                const existing = cart.find(item => item.id === product.id && item.size === selectedSize);
+                if(existing) {
+                    existing.qty += 1;
+                } else {
+                    cart.push({ ...product, size: selectedSize, qty: 1 });
+                }
+                updateCartUI();
+                closeProductModal();
+                toggleCart();
+                showNotification("Added to Cart", `${product.name} (Size: ${selectedSize}) added successfully.`);
+            };
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        // Checkout Modal Logic
+        function openCheckout() {
+            if(cart.length === 0) {
+                showNotification("Cart Empty", "Please add items to your cart before checking out.", "error");
+                return;
+            }
+            toggleCart();
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        // Form Submission Handlers
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            closeCheckout();
+            cart = [];
+            updateCartUI();
+            showNotification("Order Placed Successfully!", "Thank you for shopping with Wahid Footwear. Our team will contact you shortly.");
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            e.target.reset();
+            showNotification("Inquiry Sent!", "We have received your message and will get back to you soon.");
+        }
+
+        // Custom Notification Box
+        function showNotification(title, msg, type = 'success') {
+            const box = document.getElementById('notificationBox');
+            document.getElementById('notifTitle').textContent = title;
+            document.getElementById('notifMsg').textContent = msg;
+
+            box.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                box.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
